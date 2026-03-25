@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Profile | Lea M. Caño</title>
+    <style>
+        :root {
+            --sunflower: #FFD700;
+            --bg: #0a0a0a;
+            --card: #151515;
+            --text: #ffffff;
+            --muted: #b3b3b3;
+            --online: #2ecc71;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* --- FLOATING ANIMATION --- */
+        .petal {
+            position: absolute;
+            color: var(--sunflower);
+            font-size: 1.5rem;
+            user-select: none;
+            z-index: -1;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* --- MAIN FRAME --- */
+        .main-frame {
+            text-align: center;
+            background: rgba(21, 21, 21, 0.95);
+            padding: 30px 30px 40px 30px;
+            border-radius: 40px;
+            border: 3px solid var(--sunflower);
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.2);
+            width: 90%;
+            max-width: 420px;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        .profile-header-title {
+            color: var(--muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        /* --- IMAGE CONTAINER --- */
+        .profile-container {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 15px;
+        }
+
+        .profile-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid var(--sunflower);
+            overflow: hidden;
+            background: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Keeps your photo from stretching */
+        }
+
+        .status-dot {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 15px;
+            height: 15px;
+            background: var(--online);
+            border: 3px solid var(--card);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--online);
+        }
+
+        h1 { color: var(--sunflower); text-transform: uppercase; font-size: 1.6rem; margin-bottom: 20px; letter-spacing: 2px; }
+
+        .info-box {
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 12px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .label { color: var(--sunflower); font-weight: 800; font-size: 0.6rem; display: block; text-transform: uppercase; margin-bottom: 2px; }
+        .value { font-size: 1.05rem; font-weight: 500; }
+
+        .btn-about {
+            background: var(--sunflower);
+            color: #000;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin: 20px 0;
+            animation: pulse 2.5s infinite;
+        }
+
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+        .submission-box {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        .instructor-name { color: var(--sunflower); font-weight: 700; font-size: 1rem; margin-top: 5px; }
+
+        /* --- MODAL --- */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 100;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            backdrop-filter: blur(15px);
+        }
+
+        .modal-content {
+            background-color: var(--card);
+            margin: 5% auto;
+            padding: 40px;
+            border: 2px solid var(--sunflower);
+            width: 85%;
+            max-width: 700px;
+            border-radius: 30px;
+            max-height: 85vh;
+            overflow-y: auto;
+            animation: popUp 0.4s ease-out;
+        }
+
+        @keyframes popUp { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .close { color: var(--sunflower); float: right; font-size: 2.5rem; cursor: pointer; }
+        .modal-body p { text-align: justify; line-height: 1.8; color: var(--muted); margin-bottom: 20px; }
+        .highlight { color: var(--sunflower); font-weight: 600; }
+
+        .goals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+        .goal-card { background: rgba(255, 255, 255, 0.03); padding: 15px; border-radius: 12px; border-left: 4px solid var(--sunflower); }
+        .goal-card h3 { color: var(--sunflower); margin: 0 0 5px 0; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <script>
+        for (let i = 0; i < 15; i++) {
+            let petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.innerHTML = '🌻';
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            petal.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(petal);
+        }
+    </script>
+
+    <div class="main-frame">
+        <div class="profile-header-title">My Personal Profile</div>
+        
+        <div class="profile-container">
+            <div class="profile-circle">
+                <img src="5011.jpg" alt="Lea M. Caño">
+            </div>
+            <div class="status-dot"></div>
+        </div>
+
+        <h1>Lea M. Caño</h1>
+        
+        <div class="info-box"><span class="label">Course</span><span class="value">BSIT</span></div>
+        <div class="info-box"><span class="label">Year / Section</span><span class="value">3-A</span></div>
+
+        <button class="btn-about" onclick="openModal()">About Me & Goals</button>
+
+        <div class="submission-box">
+            <div style="font-size: 0.7rem; color: var(--muted); text-transform: uppercase;">Submitted to:</div>
+            <div class="instructor-name">Sir RL AGUACITO</div>
+            <div style="font-size: 0.8rem; color: var(--muted); margin-top: 3px;">Subject: Web Development</div>
+        </div>
+    </div>
+
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 style="color: var(--sunflower); text-align: center;">Personal Narrative</h2>
+            
+            <div class="modal-body">
+                <p>I am <span class="highlight">Lea M. Caño</span>, currently navigating my third year as a <span class="highlight">BSIT 3-A</span> student at <span class="highlight">Passi City College</span>. Living in the quiet community of <span class="highlight">Brgy. Man-it, Passi City</span>, I have learned that the environment we surround ourselves with plays a crucial role in our ability to stay focused and dedicated to our long-term academic and personal goals.</p>
+
+                <p>My journey is deeply anchored by my family; I am <span class="highlight">married and a proud mother to one daughter</span>. Balancing the technical demands of an Information Technology degree with the responsibilities of a household has shaped me into a resilient and highly organized person, teaching me that true success is built on the foundation of love and sacrifice.</p>
+
+                <p>In this academic stage, I have come to a profound realization: <span class="highlight">even if I don't achieve the highest possible grades, what matters most is my determination to finish my studies.</span> For me, graduation is not just about a GPA, but a symbol of the endurance I have shown for the sake of my family's future and the dreams I hold for my daughter.</p>
+
+                <p>I believe that being a "professional" is earned through consistency and grit rather than just innate talent. By prioritizing the completion of my degree, I am proving that <span class="highlight">finishing what you start</span> is the ultimate mark of character and the true starting point for a stable career in the ever-changing world of technology.</p>
+
+                <p>My growth mindset is inspired by the <span class="highlight">sunflower</span>. A sunflower doesn't compare its height to others; it simply focuses on reaching toward the light. Similarly, I focus on my own unique progress, ensuring that every day I am one step closer to reaching the finish line at PCC.</p>
+
+                <hr style="border: 0.5px solid #333; margin: 30px 0;">
+                
+                <h2 style="color: var(--sunflower); text-align: center;">My Top Goals</h2>
+                <div class="goals-grid">
+                    <div class="goal-card"><h3>🎓 Finish Studies</h3><p>Successfully graduate BSIT at Passi City College.</p></div>
+                    <div class="goal-card"><h3>👨‍👩‍👧 Family Future</h3><p>Provide a better life for my daughter.</p></div>
+                    <div class="goal-card"><h3>💻 Web Dev Mastery</h3><p>Become proficient in modern web technologies.</p></div>
+                    <div class="goal-card"><h3>🌻 Resilience</h3><p>Grow through every challenge like a sunflower.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal() { document.getElementById("aboutModal").style.display = "block"; }
+        function closeModal() { document.getElementById("aboutModal").style.display = "none"; }
+        window.onclick = function(event) {
+            let modal = document.getElementById("aboutModal");
+            if (event.target == modal) { modal.style.display = "none"; }
+        }
+    </script>
+
+</body>
+</html>
